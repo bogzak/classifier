@@ -36,7 +36,7 @@ def main():
     client_openai = OpenAI(api_key=openai_api_key)
 
     # Инициализация GPT-клиента
-    gpt_client = GPT(model="gpt-4o", client=client_openai)
+    gpt_client = GPT(model="gpt-3.5-turbo", client=client_openai)
 
     # Инициализация классификатора
     classifier = Classifier(gpt_client)
