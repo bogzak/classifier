@@ -42,8 +42,8 @@ def main():
     classifier = Classifier(gpt_client)
 
     # Пути к входному и выходному файлам
-    input_file = "sites.txt"
-    output_file = "results.txt"
+    input_file = "files/sites.txt"
+    output_file = "files/results.txt"
 
     # Считываем URL-ы
     sites = read_from_file(input_file)
