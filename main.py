@@ -52,7 +52,7 @@ def main():
     # Один httpx.Client для всех запросов
     with httpx.Client() as httpx_client:
         for site in sites:
-            html_content = fetch_html(site, httpx_client)
+            html_content = fetch_html("https://r.jina.ai/" + site, httpx_client)
             classification = classifier.classify_html_content(html_content)
             results.append((site, classification))
             logging.info(f"Сайт: {site} -> {classification}")
