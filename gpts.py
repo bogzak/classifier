@@ -14,9 +14,9 @@ class GPT:
 
     def get_response(self, message: str) -> str | None:
         try:
-            completion = self.client.chat.completion.create(
+            completion = self.client.chat.completions.create(
                 model=self.model,
-                message=[
+                messages=[
                     {
                         "role": "user",
                         "content": message

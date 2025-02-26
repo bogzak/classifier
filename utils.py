@@ -1,6 +1,7 @@
 import logging
 import httpx
 from urllib.parse import urlparse
+from fake_headers import Headers
 
 
 def read_from_file(input_file: str) -> list[str]:
@@ -19,7 +20,9 @@ def read_from_file(input_file: str) -> list[str]:
 
 def fetch_html(url: str, client: httpx.Client) -> str:
     try:
-        response = client.get(url, timeout=10.0)
+        headers_gen = Headers()
+        headers = headers_gen.generate()
+        response = client.get(url, headers=headers, timeout=10.0)
         response.raise_for_status()
         return response.text
     except Exception as ex:
@@ -36,5 +39,5 @@ def save_results_to_file(result: list, output_file: str):
 def validation_url(url: str) -> str:
     parsed = urlparse(url)
     if not parsed.scheme:
-        return "http://" + url
+        return "https://" + url
     return url
